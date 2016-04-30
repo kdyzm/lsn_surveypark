@@ -1,0 +1,2 @@
+带有时分秒的触发方式：<input type="text" id="d241" onfocus="WdatePicker({dateFmt:'yyyy年MM月dd日 HH时mm分ss秒'})" class="Wdate" style="width:300px"/>
+常规触发：<input id="d11" type="text" onClick="WdatePicker()"/>

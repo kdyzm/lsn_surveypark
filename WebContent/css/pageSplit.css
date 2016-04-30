@@ -1,0 +1,27 @@
+#pageSplit{
+    margin-top:7px;
+    margin-bottom:7px;
+    font-size: 14px;
+    text-align: center;
+}
+#pageSplit a{
+    display: inline-block;
+    background-color:#CEE5EA;
+    border :1px solid ;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 7px;
+    padding-right:7px;
+    color: #004779;
+    text-decoration: none;
+}
+#pageSplit a:HOVER {
+    background-color: #ADD8E5;
+}
+#query{
+    font-size:12px;
+    width: 50px;
+    height: 24px;    
+    text-align: center;
+    margin: 0px;
+}
