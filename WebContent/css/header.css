@@ -3,7 +3,12 @@
 html, body {
 	margin: 0;
 	padding: 0;
-	height: 100%;/*相对位置的这种写法很重要*/
+	height: 100%; /*相对位置的这种写法很重要*/
+}
+
+#nav {
+	width: 90%;
+	margin: 0 auto;
 }
 
 #header {
