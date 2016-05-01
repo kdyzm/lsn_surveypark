@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/header.css" type="text/css">
 <style type="text/css">
-	table{
+	/* table{
 		border: 1px solid black;
 		border-collapse: collapse;
 		width: 100%;
@@ -17,7 +17,7 @@
 	tr td{
 		border:1px solid black;
 		border-collapse: collapse;
-	}
+	} */
 	a{
 		color: gray;
 		text-decoration: none;
@@ -66,7 +66,7 @@
 	<div>
 		<!-- 先设计一个变量保存住surveyid -->
 		<s:set value="%{surveyId}" name="id"/>
-		<table>
+		<table class="table">
 			<tr>
 				<td colspan="2">设计调查</td>
 			</tr>
@@ -99,17 +99,17 @@
 			<tr>
 				<td colspan="2">
 					<!-- 主干内容开始 -->
-					<table>
+					<table class="table">
 						<tr>
 							<td width="20px"></td>
 							<td width="*">
 								<!-- 迭代页面集合 -->
-								<table>
+								<table class="table">
 									<s:iterator value="%{pages}" var="page">
 										<s:set var="pId" value="%{#page.pageId}"></s:set>
 										<tr>
 											<td>
-												<table>
+												<table class="table">
 													<tr class="pageTitle">
 														<!-- 页面标题 -->
 														<td width="40%" class="tdHL">
@@ -138,12 +138,12 @@
 													</tr>
 													<tr>
 														<td colspan="2">
-															<table>
+															<table class="table">
 																<tr>
 																	<td width="20px"></td>
 																	<td>
 																		<!-- 迭代问题的集合 -->
-																		<table>
+																		<table class="table">
 																			<s:iterator value="%{#page.questions}" var="question">
 																				<s:set var="qid" value="%{#question.questionId}"></s:set>
 																				<!-- 问题题干 -->
@@ -199,7 +199,8 @@
 																						</s:elseif>
 																						<!-- 第三种题型,矩阵问题，6,7,8 -->
 																						<s:else>
-																							<table>
+																							<!-- 显示矩阵型的问题 -->
+																							<table class="table">
 																								<!-- 列头 -->
 																								<tr>
 																									<td></td>
