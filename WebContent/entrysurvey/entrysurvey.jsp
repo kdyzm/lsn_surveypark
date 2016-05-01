@@ -31,13 +31,13 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><s:a cssStyle="active"
+				<li><s:a cssStyle="active"
 						action="IndexAction_toIndexPage.action" namespace="/">首页</s:a></li>
 				<li><s:a action="SurveyAction_createNewSurvey.action"
 						namespace="/">新建调查</s:a></li>
 				<li><s:a action="SurveyAction_toMySurveyPage.action"
 						namespace="/">我的调查</s:a></li>
-				<li><s:a action="EntrySurveyAction_toEntrySurveyPage.action"
+				<li class="active"><s:a action="EntrySurveyAction_toEntrySurveyPage.action"
 						namespace="/">参与调查</s:a></li>
 				<li><s:a action="RegisterAction_toRegisterPage.action"
 						namespace="/">用户注册</s:a></li>

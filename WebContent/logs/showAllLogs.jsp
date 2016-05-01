@@ -42,7 +42,7 @@
 			});
 </script>
 <style type="text/css">
-table {
+/* table {
 	width: 89%;
 	border: 1px solid balck;
 	border-collapse: collapse;
@@ -54,7 +54,7 @@ table td {
 	border: 1px solid black;
 	padding: 5px;
 	text-align: center;
-}
+} */
 </style>
 </head>
 <!-- 进行权限管理的界面 -->
@@ -63,7 +63,7 @@ table td {
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-				   <li class="active"><s:a cssStyle="active" action="IndexAction_toIndexPage.action" namespace="/">首页</s:a></li>
+				   <li><s:a cssStyle="active" action="IndexAction_toIndexPage.action" namespace="/">首页</s:a></li>
 					<li><s:a action="SurveyAction_createNewSurvey.action" namespace="/">新建调查</s:a></li>
 					<li><s:a action="SurveyAction_toMySurveyPage.action" namespace="/">我的调查</s:a></li>
 					<li><s:a action="EntrySurveyAction_toEntrySurveyPage.action" namespace="/">参与调查</s:a></li>
@@ -71,7 +71,7 @@ table td {
 					<li><s:a action="AuthenticationAction_toAuthenticationManagementPage.action" namespace="/">用户授权管理</s:a></li>
 					<li><s:a action="RoleAction_toRoleManagementPage.action" namespace="/">角色管理</s:a> </li>
 					<li><s:a action="RightAction_toRightManagementPage.action" namespace="/">权限管理</s:a></li>
-					<li><s:a action="LogAction_findAllLogs.action" namespace="/">日志管理</s:a></li>
+					<li  class="active"><s:a action="LogAction_findAllLogs.action" namespace="/">日志管理</s:a></li>
 				</ul>
 			</div>
 		</div>
@@ -100,27 +100,31 @@ table td {
 					value="查询"></s:submit>
 			</s:form>
 		</fieldset>
-		<table>
-			<tr>
-				<td>操作人</td>
-				<td>操作名称</td>
-				<td>操作参数</td>
-				<td>操作结果</td>
-				<td>结果消息</td>
-				<td>操作时间</td>
-			</tr>
-			<s:iterator value="%{#logList}" status="st">
-				<tr>
-					<td><s:property value="operator" /></td>
-					<td><s:property value="operatorName" /></td>
-					<td><s:property
-							value="@com.kdyzm.utils.StringUtils@setTagContentLimitLength(operateParams)" /></td>
-					<td><s:property value="operateResult" /></td>
-					<td><s:property value="resultMessage" /></td>
-					<td><s:date name="operatorDate" format="yyyy-MM-dd HH:mm:ss" /></td>
-				</tr>
-			</s:iterator>
-		</table>
+		<div class="container">
+			<table class="table table-striped table-hover ">
+				<thead>
+					<tr>
+						<td>操作人</td>
+						<td>操作名称</td>
+						<td>操作参数</td>
+						<td>操作结果</td>
+						<td>结果消息</td>
+						<td>操作时间</td>
+					</tr>
+				</thead>
+				<s:iterator value="%{#logList}" status="st">
+					<tr>
+						<td><s:property value="operator" /></td>
+						<td><s:property value="operatorName" /></td>
+						<td><s:property
+								value="@com.kdyzm.utils.StringUtils@setTagContentLimitLength(operateParams)" /></td>
+						<td><s:property value="operateResult" /></td>
+						<td><s:property value="resultMessage" /></td>
+						<td><s:date name="operatorDate" format="yyyy-MM-dd HH:mm:ss" /></td>
+					</tr>
+				</s:iterator>
+			</table>
+		</div>
 	</div>
 	<div id="pageSplit">
 		<s:a action="LogAction_findAllLogs.action">首页
