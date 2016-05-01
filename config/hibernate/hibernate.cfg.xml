@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "file:///D:/程序/java/Hibernate/dtd文件/hibernate-configuration-3.0.dtd">
+        "file:///F:/程序/java/Hibernate/dtd文件/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
 		<!-- 这里的数据源不需要配置了，使用spring进行c3p0数据源的配置 -->

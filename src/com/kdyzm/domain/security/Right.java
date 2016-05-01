@@ -61,4 +61,9 @@ public class Right implements Serializable{
 	public void setRightPos(int rightPos) {
 		this.rightPos = rightPos;
 	}
+	@Override
+	public String toString() {
+		return "Right [rightId=" + rightId + ", rightName=" + rightName + ", rightUrl=" + rightUrl + ", rightDesc="
+				+ rightDesc + ", rightCodes=" + rightCodes + ", rightPos=" + rightPos + ", common=" + common + "]";
+	}
 }

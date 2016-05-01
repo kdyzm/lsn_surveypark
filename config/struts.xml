@@ -2,7 +2,7 @@
 <!-- <!DOCTYPE struts SYSTEM "file:\\\D:\程序\java\struts2\dtd\struts-2.3.dtd"> -->
   <!DOCTYPE struts PUBLIC
 "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
-"file:\\\D:\程序\java\struts2\dtd\struts-2.3.dtd">
+"file:\\\F:\程序\java\struts2\dtd\struts-2.3.dtd">
 <struts>
 	<!-- 定义新的拦截器用于拦截未登录就访问资源的请求！ -->
 	<package name="surveyparkPackage" extends="struts-default,jfreechart-default" namespace="/">
