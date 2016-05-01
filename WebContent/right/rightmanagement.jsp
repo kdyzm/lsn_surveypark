@@ -37,7 +37,7 @@
 	}
 </script>
 <style type="text/css">
-	table{
+	/* table{
 		width:96%;
 		border: 1px solid balck;
 		border-collapse: collapse;
@@ -50,10 +50,10 @@
 		text-align: right;
 		min-width: 30px;
 		font-size: 16px;
-	}
-	.endtd{
+	} */
+	/* .endtd{
 		text-align: center;
-	}
+	} */
 	input[type='submit']{
 		border:1px solid gray;
 		width: 10%;
@@ -72,14 +72,14 @@
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-				   <li class="active"><s:a cssStyle="active" action="IndexAction_toIndexPage.action" namespace="/">首页</s:a></li>
+				   <li><s:a cssStyle="active" action="IndexAction_toIndexPage.action" namespace="/">首页</s:a></li>
 					<li><s:a action="SurveyAction_createNewSurvey.action" namespace="/">新建调查</s:a></li>
 					<li><s:a action="SurveyAction_toMySurveyPage.action" namespace="/">我的调查</s:a></li>
 					<li><s:a action="EntrySurveyAction_toEntrySurveyPage.action" namespace="/">参与调查</s:a></li>
 					<li><s:a action="RegisterAction_toRegisterPage.action" namespace="/">用户注册</s:a></li>
 					<li><s:a action="AuthenticationAction_toAuthenticationManagementPage.action" namespace="/">用户授权管理</s:a></li>
 					<li><s:a action="RoleAction_toRoleManagementPage.action" namespace="/">角色管理</s:a> </li>
-					<li><s:a action="RightAction_toRightManagementPage.action" namespace="/">权限管理</s:a></li>
+					<li class="active"><s:a action="RightAction_toRightManagementPage.action" namespace="/">权限管理</s:a></li>
 					<li><s:a action="LogAction_findAllLogs.action" namespace="/">日志管理</s:a></li>
 				</ul>
 			</div>
@@ -93,25 +93,29 @@
 			</s:a>
 		</div>
 	</div>
-	<div>
-		<table>
-			<tr>	
-				<td>ID</td>
-				<td>权限名称</td>
-				<td>公共资源
-					<s:a id="checkAllOrNot">全选/反选</s:a>
-				</td>
-				<td>权限URL</td>
-				<td>权限位</td>
-				<td>权限码</td>
-				<td>修改</td>
-				<td>删除</td>
-			</tr>
+	<div class="container">
+		<table class="table table-striped table-hover ">
+			<thead>	
+				<tr>
+					<td>ID</td>
+					<td>权限名称</td>
+					<td>公共资源
+						<s:a id="checkAllOrNot">全选/反选</s:a>
+					</td>
+					<td>权限URL</td>
+					<td>权限位</td>
+					<td>权限码</td>
+					<td>修改</td>
+					<td>删除</td>
+				</tr>
+			</thead>
 			<s:form action="RightAction_updateBatchRights.action" namespace="/" method="post">
 				<s:iterator value="rightList" status="st">
 					<tr>
 						<td>
-							<s:textfield value="%{rightId}" name="%{'rightList['+#st.index+'].rightId'}" readonly="true"></s:textfield>
+							<%-- <s:textfield value="%{rightId}" name="%{'rightList['+#st.index+'].rightId'}" readonly="true"></s:textfield> --%>
+							<s:property value="%{rightId}"/>
+							<s:hidden name="%{'rightList['+#st.index+'].rightId'}" value="%{rightId}"></s:hidden>
 						</td>
 						<td>
 							<s:textfield value="%{rightName}"  name="%{'rightList['+#st.index+'].rightName'}"></s:textfield>
