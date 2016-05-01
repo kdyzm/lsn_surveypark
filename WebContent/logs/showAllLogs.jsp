@@ -15,6 +15,9 @@
 	src="${pageContext.servletContext.contextPath}/js/jquery-1.4.1.js"></script>
 <script type="text/javascript"
 	src="${pageContext.servletContext.contextPath}/js/DatePicker/WdatePicker.js"></script>
+	<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+   	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   	<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$().ready(
 			function() {
@@ -56,7 +59,23 @@ table td {
 </head>
 <!-- 进行权限管理的界面 -->
 <body>
-	<%@ include file="/header.jsp"%>
+	<nav class="navbar navbar-default" id="nav">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+				   <li class="active"><s:a cssStyle="active" action="IndexAction_toIndexPage.action" namespace="/">首页</s:a></li>
+					<li><s:a action="SurveyAction_createNewSurvey.action" namespace="/">新建调查</s:a></li>
+					<li><s:a action="SurveyAction_toMySurveyPage.action" namespace="/">我的调查</s:a></li>
+					<li><s:a action="EntrySurveyAction_toEntrySurveyPage.action" namespace="/">参与调查</s:a></li>
+					<li><s:a action="RegisterAction_toRegisterPage.action" namespace="/">用户注册</s:a></li>
+					<li><s:a action="AuthenticationAction_toAuthenticationManagementPage.action" namespace="/">用户授权管理</s:a></li>
+					<li><s:a action="RoleAction_toRoleManagementPage.action" namespace="/">角色管理</s:a> </li>
+					<li><s:a action="RightAction_toRightManagementPage.action" namespace="/">权限管理</s:a></li>
+					<li><s:a action="LogAction_findAllLogs.action" namespace="/">日志管理</s:a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 	<div
 		style="background-color: #CCC; height: 30px; width: 100%; line-height: 30px; font-size: 15px; text-align: left; padding-left: 20px;">
 		日志管理的界面</div>
