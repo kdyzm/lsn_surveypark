@@ -85,15 +85,15 @@
 			</div>
 		</div>
 	</nav>
-	<div style="background-color:#CCC;height:30px;width: 100%;line-height: 30px;font-size: 15px;text-align: left;padding-left: 20px;">
+	<!-- <div style="background-color:#CCC;height:30px;width: 100%;line-height: 30px;font-size: 15px;text-align: left;padding-left: 20px;">
 		权限管理的界面
-		<div style="width: 100px;float: right;margin-right: 20px;">
+	</div> -->
+	<div class="container" style="margin-top:20px;">
+		<div style="width: 100px;">
 			<s:a action="RightAction_toSaveOrUpdateRightPage.action" namespace="/">
 				添加权限
 			</s:a>
 		</div>
-	</div>
-	<div class="container">
 		<table class="table table-striped table-hover ">
 			<thead>	
 				<tr>
