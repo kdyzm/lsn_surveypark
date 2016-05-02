@@ -19,7 +19,7 @@
    	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
    	<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <style type="text/css">
-table {
+/* table {
 	border: 1px solid black;
 	border-collapse: collapse;
 	width: 100%;
@@ -27,7 +27,7 @@ table {
 tr td {
 	border: 1px solid black;
 	border-collapse: collapse;
-}
+} */
 
 a {
 	color: gray;
@@ -66,10 +66,10 @@ a:HOVER {
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-				   <li class="active"><s:a cssStyle="active" action="IndexAction_toIndexPage.action" namespace="/">首页</s:a></li>
+				    <li><s:a action="IndexAction_toIndexPage.action" namespace="/">首页</s:a></li>
 					<li><s:a action="SurveyAction_createNewSurvey.action" namespace="/">新建调查</s:a></li>
 					<li><s:a action="SurveyAction_toMySurveyPage.action" namespace="/">我的调查</s:a></li>
-					<li><s:a action="EntrySurveyAction_toEntrySurveyPage.action" namespace="/">参与调查</s:a></li>
+					<li class="active"><s:a action="EntrySurveyAction_toEntrySurveyPage.action" namespace="/">参与调查</s:a></li>
 					<li><s:a action="RegisterAction_toRegisterPage.action" namespace="/">用户注册</s:a></li>
 					<li><s:a action="AuthenticationAction_toAuthenticationManagementPage.action" namespace="/">用户授权管理</s:a></li>
 					<li><s:a action="RoleAction_toRoleManagementPage.action" namespace="/">角色管理</s:a> </li>
@@ -79,17 +79,18 @@ a:HOVER {
 			</div>
 		</div>
 	</nav>
-	这里是答题界面！
+	
+	<br/>
 	<s:form namespace="/" action="EntrySurveyAction_doEntrySurvey.action">
 		<div>
 			<s:set value="%{#page.survey.surveyId}" name="id" />
 			<!-- 当前页的页码 -->
 			<s:hidden name="pageId" value="%{#page.pageId}"></s:hidden>
-			<table>
+			<table class="table">
 				<s:set var="pId" value="%{#page.pageId}"></s:set>
 				<tr>
 					<td>
-						<table style="display: inline-table;">
+						<table class="table">
 							<tr class="pageTitle">
 								<!-- 页面标题 -->
 								<td colspan="2" width="40%" class="tdHL"><s:property
@@ -97,12 +98,12 @@ a:HOVER {
 							</tr>
 							<tr>
 								<td colspan="2">
-									<table style="display: inline-table;">
+									<table class="table">
 										<tr>
 											<td width="20px"></td>
 											<td>
 												<!-- 迭代问题的集合 -->
-												<table style="display: inline-table;">
+												<table class="table">
 													<s:iterator value="%{#page.questions}" var="question">
 														<s:set var="qid" value="%{#question.questionId}"></s:set>
 														<!-- 问题题干 -->

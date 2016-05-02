@@ -57,7 +57,6 @@ table td {
 } */
 </style>
 </head>
-<!-- 进行权限管理的界面 -->
 <body>
 	<nav class="navbar navbar-default" id="nav">
 		<div class="container-fluid">
@@ -76,9 +75,6 @@ table td {
 			</div>
 		</div>
 	</nav>
-	<div
-		style="background-color: #CCC; height: 30px; width: 100%; line-height: 30px; font-size: 15px; text-align: left; padding-left: 20px;">
-		日志管理的界面</div>
 	<div>
 		<fieldset
 			style="width: 60%; padding: 10px; margin: 0 auto; margin-top: 20px;">

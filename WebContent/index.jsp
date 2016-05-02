@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Insert title here</title>
 	<style type="text/css">
-		table {
+		/* table {
 				margin:0 auto;
 				margin-top:20px;
 				width: 50%; 
@@ -17,7 +17,7 @@
 			padding: 5px;
 			text-align: center;
 			border:1px solid black;
-		}
+		} */
 		input {
 			width: 70%;
 		}
@@ -26,11 +26,11 @@
 			margin:0 auto;
 		}
 		
-		body {
+		/* body {
 		  padding-top: 40px;
 		  padding-bottom: 40px;
 		  background-color: #eee;
-		}
+		} */
 		
 		.form-signin {
 		  max-width: 330px;
@@ -92,9 +92,7 @@
 		</div>
 	</nav>
 	<s:if test="%{#session.user != null}">
-		<div>
-			欢迎你,<s:property value="%{#session.user.nickName}"/>
-		</div>
+		<h1>欢迎你,<s:property value="%{#session.user.nickName}"/></h1>
 	</s:if>
 	<s:else>
 	<div class="container">
