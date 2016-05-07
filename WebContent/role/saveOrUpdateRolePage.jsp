@@ -127,59 +127,55 @@
 			</div>
 		</div>
 	</nav>
-	<div>
+	
+	<div class="container">
 		<s:form action="RoleAction_saveOrUpdateRole.action" namespace="/">
 			<s:hidden name="roleId"></s:hidden>
-			<table>
+			
+			<div class="form-group">
+				<label for="roleName" class="col-sm-2 control-label">角色名称</label>
+				<div class="col-sm-10">
+					<s:textfield cssClass="form-control" name="roleName"></s:textfield>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="roleValue" class="col-sm-2 control-label">角色值</label>
+				<div class="col-sm-10">
+					<s:textfield cssClass="form-control" name="roleValue"></s:textfield>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="roleDesc" class="col-sm-2 control-label">角色描述</label>
+				<div class="col-sm-10">
+					<s:textfield cssClass="form-control" name="roleDesc"></s:textfield>
+				</div>
+			</div>
+			
+			<table style="border:0px solid;margin:0 auto;">
 				<tr>
-					<td>
-						角色名称
+					<td style="border:0px;float:right;">
+						<s:select cssStyle="width:300px;" cssClass="form-control" list="%{rights}" name="ownRights" multiple="true" size="20" listKey="rightId" listValue="rightName"></s:select>
 					</td>
-					<td>
-						<s:textfield name="roleName"></s:textfield>
+					<td style="border: 0px;text-align: center;">
+							<button id="toRight">&gt;</button><br/>
+							<button id="toLeft">&lt;</button><br/>
+							<button id="allToRight">&gt;&gt;</button><br/>
+							<button id="allToLeft">&lt;&lt;</button>
 					</td>
-				</tr>
-				<tr>
-					<td>角色值</td>
-					<td>
-						<s:textfield name="roleValue"></s:textfield>
-					</td>
-				</tr>
-				<tr>
-					<td>角色描述</td>
-					<td>
-						<s:textarea name="roleDesc"></s:textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<!-- select标签必须加上name属性，否则就会报错 -->
-						<table style="border: 0px;padding: 0px;width: 200px;">
-							<tr>
-								<td style="border: 0px;">
-									<s:select list="%{rights}" name="ownRights" multiple="true" size="20" listKey="rightId" listValue="rightName"></s:select>
-								</td>
-								<td style="border: 0px;">
-									<div style="display: inline-block;">
-										<button id="toRight">&gt;</button><br/>
-										<button id="toLeft">&lt;</button><br/>
-										<button id="allToRight">&gt;&gt;</button><br/>
-										<button id="allToLeft">&lt;&lt;</button>
-									</div>
-								</td>
-								<td style="border: 0px;">
-									<s:select list="%{#noneOwnRights}" name="noneOwnRights" multiple="true" size="20" listKey="rightId" listValue="rightName"></s:select>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<s:submit value="确认" id="submit"></s:submit>
+					<td  style="border: 0px;">
+						<s:select cssStyle="width:300px;" cssClass="form-control" list="%{#noneOwnRights}" name="noneOwnRights" multiple="true" size="20" listKey="rightId" listValue="rightName"></s:select>
 					</td>
 				</tr>
 			</table>
+			<br/>
+			<br/>
+			<div class="form-group" style="width:200px;margin:0 auto;">
+				<div class="col-sm-10">
+					<s:submit cssStyle="margin:0 auto;" cssClass="btn btn-primary" value="确认" id="submit"></s:submit>
+				</div>
+			</div>
 		</s:form>
 	</div>
 </body>
