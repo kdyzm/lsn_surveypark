@@ -121,7 +121,50 @@
 		<li><s:a action="RightAction_toRightManagementPage.action" namespace="/">权限管理</s:a></li>
 		<li><s:a action="LogAction_findAllLogs.action" namespace="/">日志管理</s:a></li>
 	</ul>
-	<div>
+	<!-- 替换bootstrap表单 -->
+	<div class="container">
+		<s:form cssClass="form-horizontal" role="form"
+			action="AuthenticationAction_saveOrUpdateAuthentication.action"
+			namespace="/">
+			<s:hidden name="userId"></s:hidden>
+			<div class="form-group">
+				<label for="email" class="col-sm-2 control-label">电子邮箱</label>
+				<div class="col-sm-10">
+					<s:textfield cssClass="form-control" name="email"></s:textfield>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="nickName" class="col-sm-2 control-label">昵称</label>
+				<div class="col-sm-10">
+					<s:textfield cssClass="form-control" name="nickName"></s:textfield>
+				</div>
+			</div>
+			<table style="border:0px solid;margin:0 auto;">
+				<tr>
+					<td style="border:0px;float:right;">
+						<s:select cssStyle="width:300px;" cssClass="form-control" list="%{roles}" name="ownRoles" multiple="true" size="20" listKey="roleId" listValue="roleName"></s:select>
+					</td>
+					<td style="border: 0px;text-align: center;">
+							<button id="toRight">&gt;</button><br/>
+							<button id="toLeft">&lt;</button><br/>
+							<button id="allToRight">&gt;&gt;</button><br/>
+							<button id="allToLeft">&lt;&lt;</button>
+					</td>
+					<td  style="border: 0px;">
+						<s:select cssStyle="width:300px;" cssClass="form-control" list="%{#noneOwnRoles}" name="noneownRoles" multiple="true" size="20" listKey="roleId" listValue="roleName"></s:select>
+					</td>
+				</tr>
+			</table>
+			<br/>
+			<br/>
+			<div class="form-group" style="width:200px;margin:0 auto;">
+				<div class="col-sm-10">
+					<s:submit cssStyle="margin:0 auto;" cssClass="btn btn-primary" value="确认" id="submit"></s:submit>
+				</div>
+			</div>
+		</s:form>
+	</div>
+	<%-- <div>
 		<s:form action="AuthenticationAction_saveOrUpdateAuthentication.action" namespace="/">
 			<s:hidden name="userId"></s:hidden>
 			<table>
@@ -169,6 +212,6 @@
 				</tr>
 			</table>
 		</s:form>
-	</div>
+	</div> --%>
 </body>
 </html>
