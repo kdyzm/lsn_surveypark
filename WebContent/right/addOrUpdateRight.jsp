@@ -49,20 +49,75 @@
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-				   <li class="active"><s:a cssStyle="active" action="IndexAction_toIndexPage.action" namespace="/">首页</s:a></li>
+				   <li><s:a cssStyle="active" action="IndexAction_toIndexPage.action" namespace="/">首页</s:a></li>
 					<li><s:a action="SurveyAction_createNewSurvey.action" namespace="/">新建调查</s:a></li>
 					<li><s:a action="SurveyAction_toMySurveyPage.action" namespace="/">我的调查</s:a></li>
 					<li><s:a action="EntrySurveyAction_toEntrySurveyPage.action" namespace="/">参与调查</s:a></li>
 					<li><s:a action="RegisterAction_toRegisterPage.action" namespace="/">用户注册</s:a></li>
 					<li><s:a action="AuthenticationAction_toAuthenticationManagementPage.action" namespace="/">用户授权管理</s:a></li>
 					<li><s:a action="RoleAction_toRoleManagementPage.action" namespace="/">角色管理</s:a> </li>
-					<li><s:a action="RightAction_toRightManagementPage.action" namespace="/">权限管理</s:a></li>
+					<li class="active"><s:a action="RightAction_toRightManagementPage.action" namespace="/">权限管理</s:a></li>
 					<li><s:a action="LogAction_findAllLogs.action" namespace="/">日志管理</s:a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div>
+	
+	<div class="container">
+		<s:form action="RightAction_saveOrUpdateRightPage.action" namespace="/">
+			<s:hidden name="rightId"></s:hidden>
+			<div class="form-group">
+				<label for="rightName" class="col-sm-2 control-label">权限名称</label>
+				<div class="col-sm-10">
+					<s:textfield cssClass="form-control" name="rightName"></s:textfield>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="rightUrl" class="col-sm-2 control-label">权限URL</label>
+				<div class="col-sm-10">
+					<s:textfield cssClass="form-control" name="rightUrl"></s:textfield>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="rightPos" class="col-sm-2 control-label">权限位</label>
+				<div class="col-sm-10">
+					<s:textfield cssClass="form-control" name="rightPos"></s:textfield>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="rightCodes" class="col-sm-2 control-label">权限码</label>
+				<div class="col-sm-10">
+					<s:textfield cssClass="form-control" name="rightCodes"></s:textfield>
+				</div>
+			</div>
+			<div>
+				<label for="common">公共资源</label>
+		    	<s:checkbox cssStyle="margin-left:300px;margin-top:20px;display: inline-block;" cssClass="checkbox" name="common" type="checkbox"></s:checkbox>
+			</div>			
+		   
+		   <form role="form">
+			  <div class="form-group">
+			    <label for="rightDesc">权限描述</label>
+			    <s:textarea name="rightDesc" cssClass="form-control" rows="10"></s:textarea>
+			  </div>
+			</form>
+			
+			<div class="form-group" style="width:500px;margin:0 auto;">
+				<div style="width:200px;display: inline-block;border:0px solid;" class="col-sm-10">
+					<s:submit cssStyle="margin:0 auto;" cssClass="btn btn-primary" value="提交"></s:submit>
+				</div>
+				
+				<div style="width:200px;display: inline-block;border:0px solid;" class="col-sm-10">
+					<input style="margin:0 auto;" class="btn btn-primary"  type="reset" value="重置"/>
+				</div>
+			</div>
+		</s:form>
+	</div>
+	
+	<%-- <div>
 		<s:form action="RightAction_saveOrUpdateRightPage.action" namespace="/">
 			<s:hidden name="rightId"></s:hidden>
 			<table>
@@ -114,6 +169,6 @@
 				</tr>
 			</table>
 		</s:form>
-	</div>
+	</div> --%>
 </body>
 </html>

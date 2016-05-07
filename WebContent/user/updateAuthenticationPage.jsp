@@ -110,64 +110,64 @@
 </style>
 </head>
 <body>
-	<ul class=" navbar nav nav-pills center">
-	   <li><s:a cssStyle="active" action="IndexAction_toIndexPage.action" namespace="/">首页</s:a></li>
-		<li><s:a action="SurveyAction_createNewSurvey.action" namespace="/">新建调查</s:a></li>
-		<li><s:a action="SurveyAction_toMySurveyPage.action" namespace="/">我的调查</s:a></li>
-		<li><s:a action="EntrySurveyAction_toEntrySurveyPage.action" namespace="/">参与调查</s:a></li>
-		<li><s:a action="RegisterAction_toRegisterPage.action" namespace="/">用户注册</s:a></li>
-		<li><s:a action="AuthenticationAction_toAuthenticationManagementPage.action" namespace="/">用户授权管理</s:a></li>
-		<li><s:a action="RoleAction_toRoleManagementPage.action" namespace="/">角色管理</s:a> </li>
-		<li><s:a action="RightAction_toRightManagementPage.action" namespace="/">权限管理</s:a></li>
-		<li><s:a action="LogAction_findAllLogs.action" namespace="/">日志管理</s:a></li>
-	</ul>
-	<div>
-		<s:form action="AuthenticationAction_saveOrUpdateAuthentication.action" namespace="/">
+	<nav class="navbar navbar-default" id="nav">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+				   <li><s:a cssStyle="active" action="IndexAction_toIndexPage.action" namespace="/">首页</s:a></li>
+					<li><s:a action="SurveyAction_createNewSurvey.action" namespace="/">新建调查</s:a></li>
+					<li><s:a action="SurveyAction_toMySurveyPage.action" namespace="/">我的调查</s:a></li>
+					<li><s:a action="EntrySurveyAction_toEntrySurveyPage.action" namespace="/">参与调查</s:a></li>
+					<li><s:a action="RegisterAction_toRegisterPage.action" namespace="/">用户注册</s:a></li>
+					<li  class="active"><s:a action="AuthenticationAction_toAuthenticationManagementPage.action" namespace="/">用户授权管理</s:a></li>
+					<li><s:a action="RoleAction_toRoleManagementPage.action" namespace="/">角色管理</s:a> </li>
+					<li><s:a action="RightAction_toRightManagementPage.action" namespace="/">权限管理</s:a></li>
+					<li><s:a action="LogAction_findAllLogs.action" namespace="/">日志管理</s:a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- 替换bootstrap表单 -->
+	<div class="container">
+		<s:form cssClass="form-horizontal" role="form"
+			action="AuthenticationAction_saveOrUpdateAuthentication.action"
+			namespace="/">
 			<s:hidden name="userId"></s:hidden>
-			<table>
+			<div class="form-group">
+				<label for="email" class="col-sm-2 control-label">电子邮箱</label>
+				<div class="col-sm-10">
+					<s:textfield cssClass="form-control" name="email"></s:textfield>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="nickName" class="col-sm-2 control-label">昵称</label>
+				<div class="col-sm-10">
+					<s:textfield cssClass="form-control" name="nickName"></s:textfield>
+				</div>
+			</div>
+			<table style="border:0px solid;margin:0 auto;">
 				<tr>
-					<td>
-						电子邮箱
+					<td style="border:0px;float:right;">
+						<s:select cssStyle="width:300px;" cssClass="form-control" list="%{roles}" name="ownRoles" multiple="true" size="20" listKey="roleId" listValue="roleName"></s:select>
 					</td>
-					<td>
-						<s:textfield name="email"></s:textfield>
+					<td style="border: 0px;text-align: center;">
+							<button id="toRight">&gt;</button><br/>
+							<button id="toLeft">&lt;</button><br/>
+							<button id="allToRight">&gt;&gt;</button><br/>
+							<button id="allToLeft">&lt;&lt;</button>
 					</td>
-				</tr>
-				<tr>
-					<td>昵称</td>
-					<td>
-						<s:textfield name="nickName"></s:textfield>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<!-- select标签必须加上name属性，否则就会报错 -->
-						<table style="border: 0px;padding: 0px;width: 200px;">
-							<tr>
-								<td style="border: 0px;">
-									<s:select list="%{roles}" name="ownRoles" multiple="true" size="20" listKey="roleId" listValue="roleName"></s:select>
-								</td>
-								<td style="border: 0px;">
-									<div style="display: inline-block;">
-										<button id="toRight">&gt;</button><br/>
-										<button id="toLeft">&lt;</button><br/>
-										<button id="allToRight">&gt;&gt;</button><br/>
-										<button id="allToLeft">&lt;&lt;</button>
-									</div>
-								</td>
-								<td style="border: 0px;">
-									<s:select list="%{#noneOwnRoles}" name="noneownRoles" multiple="true" size="20" listKey="roleId" listValue="roleName"></s:select>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<s:submit value="确认" id="submit"></s:submit>
+					<td  style="border: 0px;">
+						<s:select cssStyle="width:300px;" cssClass="form-control" list="%{#noneOwnRoles}" name="noneownRoles" multiple="true" size="20" listKey="roleId" listValue="roleName"></s:select>
 					</td>
 				</tr>
 			</table>
+			<br/>
+			<br/>
+			<div class="form-group" style="width:200px;margin:0 auto;">
+				<div class="col-sm-10">
+					<s:submit cssStyle="margin:0 auto;" cssClass="btn btn-primary" value="确认" id="submit"></s:submit>
+				</div>
+			</div>
 		</s:form>
 	</div>
 </body>
