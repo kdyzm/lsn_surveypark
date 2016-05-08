@@ -6,6 +6,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import com.kdyzm.domain.User;
@@ -24,16 +25,17 @@ import com.opensymphony.xwork2.interceptor.Interceptor;
  *
  */
 public class LoginInterceptor implements Interceptor{
+	private Logger logger=Logger.getLogger(LoginInterceptor.class);
 	private static final long serialVersionUID = 7321012192261008127L;
 
 	@Override
 	public void destroy() {
-		System.out.println("登录拦截器被销毁！");
+		logger.info("登录拦截器被销毁！");
 	}
 
 	@Override
 	public void init() {
-		System.out.println("登录拦截器初始化！");
+		logger.info("登录拦截器初始化！");
 	}
 
 	/*@Override

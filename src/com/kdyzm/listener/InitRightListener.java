@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -29,6 +30,7 @@ import com.kdyzm.service.RightService;
  */
 @Component
 public class InitRightListener implements ApplicationListener,ServletContextAware{
+	private Logger logger=Logger.getLogger(InitRightListener.class);
 	private ServletContext sc;
 	@Resource(name="rightService")
 	private RightService rightService;
@@ -39,14 +41,14 @@ public class InitRightListener implements ApplicationListener,ServletContextAwar
 			Collection<Right> rights=rightService.getAllRights();
 			Map<String,Right>rightMap=new HashMap<String,Right>();
 			for(Right right: rights){
-				System.out.println(right.getRightUrl()+":"+right.getCommon());
+				logger.info(right.getRightUrl()+":"+right.getCommon());
 				rightMap.put(right.getRightUrl(), right);
 			}
 			if(sc!=null){
 				sc.setAttribute("all_rights_map", rightMap);
-				System.out.println("初始化RightMap成功！");
+				logger.info("初始化RightMap成功！");
 			}else{
-				System.out.println("ServletContext对象为空，初始化RightMap对象失败！");
+				logger.error("ServletContext对象为空，初始化RightMap对象失败！");
 			}
 		}
 	}
@@ -54,7 +56,7 @@ public class InitRightListener implements ApplicationListener,ServletContextAwar
 	//注入ServletContext
 	@Override
 	public void setServletContext(ServletContext servletContext) {
-		System.out.println("注入ServletContext对象");
+		logger.info("注入ServletContext对象");
 		this.sc=servletContext;
 	}
 

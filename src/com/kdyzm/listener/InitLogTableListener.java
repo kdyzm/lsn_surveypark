@@ -2,6 +2,7 @@ package com.kdyzm.listener;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -17,28 +18,35 @@ import com.kdyzm.utils.LogUtils;
  */
 @Component
 public class InitLogTableListener implements ApplicationListener{
+	private Logger logger=Logger.getLogger(InitLogTableListener.class);
 	@Resource(name="logService")
 	private LogService logService;
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 		if(event instanceof ContextRefreshedEvent){
-			//生成当前月的日志表
-			String tableName=LogUtils.createGenerateLogsTableName(0);
+			//生成上个月的表
+			String tableName=LogUtils.createGenerateLogsTableName(-1);
 			String sql="create table if not exists "+tableName+" like logs";
 			logService.executeSql(sql);
-			System.out.println(tableName+" 表已经生成！");
+			logger.info(tableName+" 表已经生成！");
+			
+			//生成当前月的日志表
+			tableName=LogUtils.createGenerateLogsTableName(0);
+			sql="create table if not exists "+tableName+" like logs";
+			logService.executeSql(sql);
+			logger.info(tableName+" 表已经生成！");
 			
 			//生成下一个月的日志表
 			tableName=LogUtils.createGenerateLogsTableName(1);
 			sql="create table if not exists "+tableName+" like logs";
 			logService.executeSql(sql);
-			System.out.println(tableName+" 表已经生成！");
+			logger.info(tableName+" 表已经生成！");
 			
 			//生成第二个月的日志表
 			tableName=LogUtils.createGenerateLogsTableName(2);
 			sql="create table if not exists "+tableName+" like logs";
 			logService.executeSql(sql);
-			System.out.println(tableName+" 表已经生成！");
+			logger.info(tableName+" 表已经生成！");
 		}
 	}
 }
