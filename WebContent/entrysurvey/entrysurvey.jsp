@@ -14,15 +14,25 @@
 <style type="text/css">
 .survey {
 	display: inline-block;
-	width: 150px;
+	width: 200px;
 	text-align: center;
 	margin: 20px;
+	-moz-box-shadow: 6px 6px 10px #BCBAB9;
+    -webkit-box-shadow: 6px 6px 10px #BCBAB9;
+    box-shadow: 6px 6px 6px #BCBAB9;
 }
 
 #nav {
 	width: 90%;
 	margin: 0 auto;
 }
+
+.img{
+    		-moz-box-shadow: 6px 6px 10px #BCBAB9;
+    		-webkit-box-shadow: 6px 6px 10px #BCBAB9;
+    		box-shadow: 6px 6px 6px #BCBAB9;
+    		/* border:1px solid black; */
+    	}
 </style>
 </head>
 <body>
