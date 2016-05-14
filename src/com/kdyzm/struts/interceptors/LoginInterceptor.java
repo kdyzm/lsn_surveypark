@@ -40,20 +40,20 @@ public class LoginInterceptor implements Interceptor{
 
 	/*@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		System.out.println("被登录拦截器拦截！");
+		logger.info("被登录拦截器拦截！");
 		Action action=(Action) invocation.getAction();
 		if(action instanceof LoginAction ||action instanceof RegisterAction){
-			System.out.println("即将进行登录或者注册，直接放行!");
+			logger.info("即将进行登录或者注册，直接放行!");
 			return invocation.invoke();
 		}
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
 		User user=(User) session.getAttribute("user");
 		if(user==null){
-			System.out.println("用户未登录，必须先登录再访问其他资源!即将跳转到登陆界面！");
+			logger.info("用户未登录，必须先登录再访问其他资源!即将跳转到登陆界面！");
 			return "toLoginPage";
 		}else{
-			System.out.println("用户已经登陆，登录拦截器已经放行！");
+			logger.info("用户已经登陆，登录拦截器已经放行！");
 			//如果用户名不为空，而且实现了UserAware接口，就需要调用该接口中的相应方法给类中的成员变量赋值
 			//TODO 给Action中User动态赋值的方法
 			if(action instanceof UserAware){
@@ -91,7 +91,7 @@ public class LoginInterceptor implements Interceptor{
 		Right right=allRights.get(url);
 		//如果是公共资源直接方放过
 		if(right==null||right.getCommon()){
-			System.out.println("访问公共资源，即将放行！");
+			logger.info("访问公共资源，即将放行！");
 			return invocation.invoke();
 		}else{
 			User user=(User) session.getAttribute("user");

@@ -6,12 +6,15 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.kdyzm.domain.User;
 import com.kdyzm.domain.security.Right;
 import com.kdyzm.struts.action.aware.UserAware;
 import com.opensymphony.xwork2.Action;
 
 public class ValidateUtils {
+	private static Logger logger=Logger.getLogger(ValidateUtils.class);
 	// 验证是否有权限的验证方法
 	public static boolean hasRight(String namespace, String actionName, HttpServletRequest request,Action action) {
 		String url = namespace + "/"
@@ -24,7 +27,7 @@ public class ValidateUtils {
 		Right right = allRights.get(url);
 		// 如果是公共资源直接方放过
 		if (right == null || right.getCommon()) {
-//			System.out.println("访问公共资源，即将放行！");
+//			logger.info("访问公共资源，即将放行！");
 			return true;
 		} else {
 			User user = (User) session.getAttribute("user");

@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.components.Anchor;
 import org.apache.struts2.components.Component;
 
@@ -39,7 +40,7 @@ import com.opensymphony.xwork2.util.ValueStack;
 public class AnchorTag extends AbstractClosingTag {
 
     private static final long serialVersionUID = -1034616578492431113L;
-
+    private static Logger logger=Logger.getLogger(AnchorTag.class);
     protected String href;
     protected String includeParams;
     protected String scheme;
@@ -162,12 +163,12 @@ public class AnchorTag extends AbstractClosingTag {
     		}
     	}
     	boolean result=ValidateUtils.hasRight(namespace, action, (HttpServletRequest)pageContext.getRequest(), null);
-//    	System.out.println("即将访问"+namespace+action);
+//    	logger.info("即将访问"+namespace+action);
     	if(result==true){
-//    		System.out.println("有权限，即将放行！");
+//    		logger.info("有权限，即将放行！");
     		return super.doEndTag();
     	}else{
-//    		System.out.println("没有权限，即将跳过标签体！");
+//    		logger.info("没有权限，即将跳过标签体！");
     		return SKIP_BODY;
     	}
     }

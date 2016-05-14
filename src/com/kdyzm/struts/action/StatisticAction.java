@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
@@ -35,6 +36,7 @@ import com.opensymphony.xwork2.ActionContext;
 @Controller
 @Scope("prototype")
 public class StatisticAction extends BaseAction<Survey> {
+	private Logger logger=Logger.getLogger(StatisticAction.class);
 	private static final long serialVersionUID = 7348499753359866614L;
 	@Resource(name = "statisticService")
 	private StatisticService statisticService;
@@ -82,13 +84,13 @@ public class StatisticAction extends BaseAction<Survey> {
 		/**
 		 * 在统计之前先绑定数据
 		 */
-		System.out.println("访问了StatisticAction的statistic方法！");
+		logger.info("访问了StatisticAction的statistic方法！");
 		Question question=questionService.getQuestion(questionId);
 		Survey survey=question.getPage().getSurvey();
 		SurveyToken surveyToken=new SurveyToken();
 		surveyToken.setSurvey(survey);
 		SurveyToken.bind(surveyToken);
-		System.out.println("即将访问statisticService的统计方法！");
+		logger.info("即将访问statisticService的统计方法！");
 		QuestionStatisticModel questionStatisticModel = this.statisticService.statics(question);
 		//解除绑定，实际上已经解除绑定过一次了但是好像并不管用
 		SurveyToken.unbind();
@@ -173,7 +175,7 @@ public class StatisticAction extends BaseAction<Survey> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("StatisticAction的统计方法结束");
+		logger.info("StatisticAction的统计方法结束");
 		return SUCCESS;
 	}
 	private Question question;

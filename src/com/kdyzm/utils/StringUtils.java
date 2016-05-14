@@ -2,7 +2,10 @@ package com.kdyzm.utils;
 
 import java.util.UUID;
 
+import org.apache.log4j.Logger;
+
 public class StringUtils {
+	private static Logger logger=Logger.getLogger(StringUtils.class);
 	//String转换成String数组
 	public static synchronized String[] String2Arr(String sourceStr){
 		if(sourceStr!=null)
@@ -45,7 +48,7 @@ public class StringUtils {
 	//通过jsp页面的静态调用可以直接调用某个类的某个方法
 	public static String setTagContentLimitLength(String string){
 		int length=15;
-		System.out.println("访问了setTagContentLimitLength方法！"+string);
+		logger.info("访问了setTagContentLimitLength方法！"+string);
 		if(string !=null){
 			if(string.length()>length){
 				return string.substring(0,length)+"......";

@@ -2,8 +2,10 @@ package com.kdyzm.utils;
 
 import java.security.MessageDigest;
 
+import org.apache.log4j.Logger;
+
 public class DataUtils {
-	
+	private static Logger logger=Logger.getLogger(DataUtils.class);
 	//TODO md5加密工具
 	public static synchronized String md5(String input){
 		try {
@@ -11,7 +13,7 @@ public class DataUtils {
 			String arr[]={"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"};
 			MessageDigest messageDigest=MessageDigest.getInstance("MD5");
 			byte []data=messageDigest.digest(input.getBytes());
-			System.out.println(data.length);
+			logger.info(data.length);
 			for(byte temp:data){
 				//高四位
 				sb.append(arr[(temp>>4)&0X0F]);

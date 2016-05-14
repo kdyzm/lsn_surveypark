@@ -35,7 +35,7 @@ public class LoginAction extends BaseAction<User> implements SessionAware{
 			return "input";
 		}else{
 			//关于怎么将Session直接注入Action中的方法是一个比较难的题目
-			System.out.println("用户登陆成功！");
+			logger.info("用户登陆成功！");
 			//在登陆成功的时候计算权限码
 			int maxPos=rightService.getMaxPost();
 			user.setRightSum(new long[maxPos+1]);

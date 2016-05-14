@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.kdyzm.dao.impl.AnswerDaoImpl;
@@ -20,6 +21,7 @@ import com.kdyzm.domain.User;
 import com.kdyzm.service.SurveyService;
 @Service("surveyService")
 public class SurveyServiceImpl implements SurveyService{
+	private Logger logger=Logger.getLogger(SurveyServiceImpl.class);
 	@Resource(name="surveyDao")
 	private SurveyDaoImpl surveyDao;
 	@Resource(name="pageDao")
@@ -98,7 +100,7 @@ public class SurveyServiceImpl implements SurveyService{
 	 */
 	@Override
 	public void updateSurveyClosedState(Survey model) {
-		System.out.println("访问了SurveyService的updateSurveyClosedState方法！");
+		logger.info("访问了SurveyService的updateSurveyClosedState方法！");
 		model=this.getModelById(model.getSurveyId());
 		if(model.isClosed()){
 			model.setClosed(false);

@@ -2,6 +2,7 @@ package com.kdyzm.struts.interceptors;
 
 import javax.servlet.ServletContext;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -16,16 +17,17 @@ import com.opensymphony.xwork2.interceptor.Interceptor;
  *
  */
 public class CatchUrlInterceptor implements Interceptor{
+	private Logger logger=Logger.getLogger(CatchUrlInterceptor.class);
 	private static final long serialVersionUID = 6747245610234756713L;
 
 	@Override
 	public void destroy() {
-		System.out.println("捕获URL拦截器被销毁！");
+		logger.info("捕获URL拦截器被销毁！");
 	}
 
 	@Override
 	public void init() {
-		System.out.println("捕获URL拦截器初始化！");
+		logger.info("捕获URL拦截器初始化！");
 	}
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {

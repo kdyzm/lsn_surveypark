@@ -1,5 +1,7 @@
 package com.kdyzm.datasource;
 
+
+import org.apache.log4j.Logger;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 import com.kdyzm.domain.Survey;
@@ -11,7 +13,7 @@ import com.kdyzm.domain.Survey;
  *
  */
 public class SurveyparkDatasourceRouter extends AbstractRoutingDataSource{
-
+	Logger logger=Logger.getLogger(SurveyparkDatasourceRouter.class);
 	/**
 	 * 该方法实际上确定了一个数据向哪里存放的策略
 	 * 在这里使用id的就属性来确定
@@ -24,7 +26,7 @@ public class SurveyparkDatasourceRouter extends AbstractRoutingDataSource{
 		if(surveyToken!=null){
 			Survey survey=surveyToken.getSurvey();
 			int surveyId=survey.getSurveyId();
-			System.out.println("Survey对象不为空，值为："+surveyId);
+			logger.info("Survey对象不为空，值为："+surveyId);
 			/**
 			 * 在这里必须解除绑定
 			 * 如果不在这里解除绑定的话就会将log日志写入到lsn_surveypark1数据库中。
@@ -33,7 +35,7 @@ public class SurveyparkDatasourceRouter extends AbstractRoutingDataSource{
 			SurveyToken.unbind();
 			return (surveyId%2)==0?"even":"odd";	//如果是偶数返回even字符串，如果是奇数返回odd字符串
 		}
-		System.out.println("survey对象为空");
+		logger.info("survey对象为空");
 		return null;
 	}
 	
