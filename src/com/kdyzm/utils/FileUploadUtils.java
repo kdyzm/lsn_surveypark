@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 /**
@@ -14,6 +15,7 @@ import org.apache.struts2.ServletActionContext;
  *
  */
 public class FileUploadUtils {
+	private static Logger logger=Logger.getLogger(FileUploadUtils.class);
     /**
      * 保存文件到指定的位置
      * 注意保存的方法的问题
@@ -37,7 +39,7 @@ public class FileUploadUtils {
         try {
             FileUtils.copyFile(sourceFile, destFile);
         } catch (IOException e) {
-            System.out.println("保存文件失败！");
+        	logger.info("保存文件失败！");
         }
         return "/upload"+sdf.format(date)+"/"+destFile.getName();
     }

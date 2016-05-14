@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import com.opensymphony.xwork2.ActionContext;
 @Controller
 @Scope("prototype")
 public class LogAction extends BaseAction<Log> {
+	private Logger logger=Logger.getLogger(LogAction.class);
 	@Resource(name = "logService")
 	private LogService logService;
 	private static final long serialVersionUID = -1136113519139723083L;
@@ -40,25 +42,25 @@ public class LogAction extends BaseAction<Log> {
 				: (operateResult.equals("1") ? "1" : "2"));
 		String operator = request.getParameter("operator");
 		ActionContext.getContext().put("operator", operator);
-		System.out.println("获取的请求参数是：requestPage=" + requestPage);
-		System.out.println("operatorDateFirst:" + operatorDateFirst);
-		System.out.println("operatorDateLast:" + operatorDateLast);
-		System.out.println("operateResult:" + operateResult);
-		System.out.println("operator:" + operator);
+		logger.info("获取的请求参数是：requestPage=" + requestPage);
+		logger.info("operatorDateFirst:" + operatorDateFirst);
+		logger.info("operatorDateLast:" + operatorDateLast);
+		logger.info("operateResult:" + operateResult);
+		logger.info("operator:" + operator);
 		if (requestPage == null || "".equals(requestPage.trim())) {
 			requestPage = "1";
 		}
 		Collection logs = this.logService.getLogsByMN(Integer.parseInt(requestPage), operatorDateFirst,
 				operatorDateLast, operateResult, operator);
 		int totalLines = this.logService.getTotalLines(operatorDateFirst, operatorDateLast, operateResult, operator);
-		System.out.println("totalLines:" + totalLines);
+		logger.info("totalLines:" + totalLines);
 		PageSplitData.requestPage = Integer.parseInt(requestPage);
 		PageSplitData.calculate(totalLines);
 
-		System.out.println("startIndex：" + PageSplitData.startIndex);
-		System.out.println("endIndex：" + PageSplitData.endIndex);
-		System.out.println("totalPages:" + PageSplitData.totalPages);
-		System.out.println("查询到的日志数量：" + logs.size());
+		logger.info("startIndex：" + PageSplitData.startIndex);
+		logger.info("endIndex：" + PageSplitData.endIndex);
+		logger.info("totalPages:" + PageSplitData.totalPages);
+		logger.info("查询到的日志数量：" + logs.size());
 
 		ActionContext.getContext().put("startIndex", PageSplitData.startIndex);
 		ActionContext.getContext().put("endIndex", PageSplitData.endIndex);

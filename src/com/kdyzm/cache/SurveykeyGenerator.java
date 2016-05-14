@@ -2,9 +2,8 @@ package com.kdyzm.cache;
 
 import java.lang.reflect.Method;
 
+import org.apache.log4j.Logger;
 import org.springframework.cache.interceptor.KeyGenerator;
-
-import com.kdyzm.test.MD5Tes;
 
 /**
  * 自定义key生成器
@@ -12,7 +11,7 @@ import com.kdyzm.test.MD5Tes;
  *
  */
 public class SurveykeyGenerator implements KeyGenerator{
-
+	private Logger logger=Logger.getLogger(SurveykeyGenerator.class);
 	//什么对象调用的什么方法，参数列表是什么
 	@Override
 	public Object generate(Object arg0, Method arg1, Object... arg2) {
@@ -27,11 +26,11 @@ public class SurveykeyGenerator implements KeyGenerator{
 			}
 			stringBuffer.append(")");
 			targetCode= targetCode+"."+methodName+stringBuffer.toString();
-			System.out.println(targetCode);
+			logger.info(targetCode);
 			return targetCode;
 		}
 		targetCode= targetCode+"."+methodName+"()";
-		System.out.println(targetCode);
+		logger.info(targetCode);
 		return targetCode;
 	}
 }

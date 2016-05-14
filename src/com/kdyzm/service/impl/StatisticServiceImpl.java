@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.kdyzm.dao.impl.AnswerDaoImpl;
@@ -19,6 +20,7 @@ import com.kdyzm.service.StatisticService;
  */
 @Service("statisticService")
 public class StatisticServiceImpl implements StatisticService{
+	private Logger logger=Logger.getLogger(StatisticServiceImpl.class);
 	@Resource(name="answerDao")
 	private AnswerDaoImpl answerDao;
 	@Resource(name="questionDao")
@@ -35,7 +37,7 @@ public class StatisticServiceImpl implements StatisticService{
 	 */
 	@Override
 	public QuestionStatisticModel statics(Question question){
-		System.out.println("访问了QuestionStatisticService的statics方法");
+		logger.info("访问了QuestionStatisticService的statics方法");
 		//该方法逻辑上分析是加上了事务的，但是需要进行测试是否真正加上了事务。
 		QuestionStatisticModel questionStatisticModel=new QuestionStatisticModel();
 		
@@ -114,7 +116,7 @@ public class StatisticServiceImpl implements StatisticService{
 						if(question.getQuestionType()==8){
 							for(int k=0;k<selectOptionArr.length;k++){
 								if(i==0&&j==0&&k==1){
-									System.out.println("继续检测");
+									logger.info("继续检测");
 								}
 								optionStatisticModel=new OptionStatisticModel();
 								optionStatisticModel.setMatirxRowIndex(i);

@@ -1,5 +1,6 @@
 package com.kdyzm.schedual;
 
+import org.apache.log4j.Logger;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
@@ -12,6 +13,7 @@ import com.kdyzm.utils.LogUtils;
  *
  */
 public class GenerateLogsTableTask extends QuartzJobBean{
+	private Logger logger=Logger.getLogger(GenerateLogsTableTask.class);
 	private LogService logService;
 	public LogService getLogService() {
 		return logService;
@@ -28,10 +30,10 @@ public class GenerateLogsTableTask extends QuartzJobBean{
 		String tableName=LogUtils.createGenerateLogsTableName(1);
 		String sql="create table if not exists "+tableName+" like logs";
 		this.logService.executeSql(sql);
-		System.out.println(tableName+" 表生成了！");
+		logger.info(tableName+" 表生成了！");
 		tableName=LogUtils.createGenerateLogsTableName(2);
 		sql="create table if not exists "+tableName+" like logs";
 		this.logService.executeSql(sql);
-		System.out.println(tableName+" 表生成了！");
+		logger.info(tableName+" 表生成了！");
 	}
 }

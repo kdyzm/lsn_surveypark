@@ -2,6 +2,7 @@ package com.kdyzm.struts.action;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.beans.BeanUtils;
@@ -15,12 +16,13 @@ import com.kdyzm.struts.action.base.BaseAction;
 @Controller("registerAction")
 @Scope("prototype")
 public class RegisterAction extends BaseAction<User>{
+	private Logger logger=Logger.getLogger(RegisterAction.class);
 	private static final long serialVersionUID = 969730751500864591L;
 	@Resource(name="userService")
 	private UserService userService;
 	//跳转到注册界面
 	public String toRegisterPage() throws Exception{
-		System.out.println("即将跳转到用户注册界面！");
+		logger.info("即将跳转到用户注册界面！");
 		return "toRegisterPage";
 	}
 	//接收表单提交的信息，并进行判断是否需要真正的进行保存

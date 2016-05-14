@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
@@ -21,6 +22,7 @@ import com.kdyzm.domain.Log;
  */
 @SuppressWarnings("unchecked")
 public abstract class BaseDaoImpl<T> implements BaseDao<T> {
+	private Logger logger=Logger.getLogger(BaseDaoImpl.class);
 	//手下需要两个成员变量，这两个成员变量的赋值，一个是通过spring容器管理，一个是通过泛型动态获取
 	@Resource(name="sessionFactory")
 	public SessionFactory sessionFactory;
@@ -33,7 +35,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 	@Override
 	public void saveEntity(T t) {
-		System.out.println("将要保存"+t);
+		logger.info("将要保存"+t);
 		this.sessionFactory.getCurrentSession().save(t);
 	}
 

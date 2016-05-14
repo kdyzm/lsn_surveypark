@@ -28,6 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.Tag;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.components.Component;
 import org.apache.struts2.components.Submit;
 
@@ -38,7 +39,7 @@ import com.opensymphony.xwork2.util.ValueStack;
  * @see Submit
  */
 public class SubmitTag extends AbstractClosingTag {
-
+	private static final Logger logger=Logger.getLogger(SubmitTag.class);
     private static final long serialVersionUID = 2179281109958301343L;
 
     protected String action;
@@ -97,7 +98,7 @@ public class SubmitTag extends AbstractClosingTag {
     }
     @Override
     public int doEndTag() throws JspException {
-//    	System.out.println("表单标签："+getFormNamespace()+getFormActionName());
+    	logger.info("表单标签："+getFormNamespace()+getFormActionName());
     	boolean result=ValidateUtils.hasRight(getFormNamespace(), getFormActionName(), (HttpServletRequest)pageContext.getRequest(), null);
     	if(result==false){
     		return SKIP_BODY;

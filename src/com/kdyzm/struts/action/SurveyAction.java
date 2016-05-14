@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -40,6 +41,7 @@ import com.opensymphony.xwork2.ActionContext;
 @Controller("surveyAction")
 @Scope("prototype")
 public class SurveyAction extends BaseAction<Survey> implements UserAware, ServletContextAware {
+	private Logger logger=Logger.getLogger(SurveyAction.class);
 	private static final long serialVersionUID = -2866898387974853835L;
 	private User user;
 	@Resource(name = "surveyService")
@@ -74,7 +76,7 @@ public class SurveyAction extends BaseAction<Survey> implements UserAware, Servl
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String surveyId = request.getParameter("surveyId");
 		this.model = this.surveyService.getModelById(Integer.parseInt(surveyId));
-		System.out.println(model.getPages().size());
+		logger.info(model.getPages().size());
 		ActionContext.getContext().getValueStack().push(model);
 		return "designSurveyPage";
 	}
@@ -116,9 +118,9 @@ public class SurveyAction extends BaseAction<Survey> implements UserAware, Servl
 	 * @throws Exception
 	 */
 	public String openOrCloseSurvey() throws Exception {
-		System.out.println("访问了SurveyAction的openOrCloseSurvey方法！");
+		logger.info("访问了SurveyAction的openOrCloseSurvey方法！");
 		this.surveyService.updateSurveyClosedState(this.model);
-		System.out.println("访问完成SurveyAction的openOrCloseSurvey方法！");
+		logger.info("访问完成SurveyAction的openOrCloseSurvey方法！");
 		return "toMySurveyPageAction";
 	}
 
@@ -163,7 +165,7 @@ public class SurveyAction extends BaseAction<Survey> implements UserAware, Servl
 		// 接着需要将保存住的文件和Survey对象关联起来
 		model = this.surveyService.getModelById(model.getSurveyId());
 		model.setLogoPath(fileName);
-		System.out.println(fileName);
+		logger.info(fileName);
 		this.surveyService.updateSurvey(model);
 		return "toDesignSurveyPageAction";
 	}

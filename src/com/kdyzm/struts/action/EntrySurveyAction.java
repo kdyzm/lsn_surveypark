@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ParameterAware;
 import org.apache.struts2.interceptor.RequestAware;
@@ -39,6 +40,7 @@ import com.opensymphony.xwork2.ActionContext;
 @Controller("entryServeyAction")
 @Scope("prototype")
 public class EntrySurveyAction extends BaseAction<Survey> implements SessionAware,ParameterAware,UserAware,ServletContextAware,RequestAware{
+	private Logger logger=Logger.getLogger(EntrySurveyAction.class);
 	private static final long serialVersionUID = -6174312592542400730L;
 	private User user;
 	private ServletContext servletConetxt;
@@ -76,7 +78,7 @@ public class EntrySurveyAction extends BaseAction<Survey> implements SessionAwar
 	
 	//判断logo是否存在如果存在返回路径，如果不存在，返回默认路径
 	public String getLogoPath(String logoPath){
-		System.out.println(logoPath);
+		logger.info(logoPath);
 		if(logoPath!=null){
 			String realPath=this.servletConetxt.getRealPath(logoPath);
 			File file=new File(realPath);

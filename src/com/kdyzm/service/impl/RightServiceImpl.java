@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.kdyzm.dao.impl.RightDaoImpl;
@@ -21,6 +22,7 @@ import com.kdyzm.service.base.impl.BaseServiceImpl;
  */
 @Service("rightService")
 public class RightServiceImpl extends BaseServiceImpl<Right> implements RightService{
+	private Logger logger=Logger.getLogger(RightServiceImpl.class);
 	@Resource(name="rightDao")
 	private RightDaoImpl rightDao;
 	//添加新权限的过程
@@ -72,7 +74,7 @@ public class RightServiceImpl extends BaseServiceImpl<Right> implements RightSer
 			right.setRightUrl(url);
 			this.saveOrUpateRight(right);
 		}else{
-			System.out.println(url+" 已经存在！");
+			logger.info(url+" 已经存在！");
 		}
 	}
 	@Override

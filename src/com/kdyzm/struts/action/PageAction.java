@@ -11,6 +11,7 @@ import java.util.Collection;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,7 @@ import com.opensymphony.xwork2.ActionContext;
 @Controller("pageAction")
 @Scope("prototype")
 public class PageAction extends BaseAction<Page> implements UserAware{
+	private Logger logger=Logger.getLogger(PageAction.class);
 	private static final long serialVersionUID = -3358080895111692755L;
 	@Resource(name="pageService")
 	private PageService pageService;
@@ -47,7 +49,7 @@ public class PageAction extends BaseAction<Page> implements UserAware{
 	}
 	//保存新建的页面的方法
 	public String saveNewPage() throws Exception{
-		System.out.println("即将保存新的页面！");
+		logger.info("即将保存新的页面！");
 		HttpServletRequest request=ServletActionContext.getRequest();
 		String surveyId=request.getParameter("surveyId");
 		ActionContext.getContext().put("surveyId", surveyId);
