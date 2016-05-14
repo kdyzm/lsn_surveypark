@@ -37,6 +37,7 @@
 						});
 				$("#query").unbind("click");
 				$("#query").bind("click", function() {
+					$("#requestPage").attr("value","1");
 					$("form").submit();
 				});
 			});
@@ -80,7 +81,7 @@ table td {
 			style="width: 60%; padding: 10px; margin: 0 auto; margin-top: 20px;">
 			<s:form cssStyle="width:80%;margin:0 auto;" namespace="/"
 				action="LogAction_findAllLogs.action" method="POST">
-				<s:hidden name="requestPage" value="%{#requestPage}"></s:hidden>
+				<s:hidden id="requestPage" name="requestPage" value="%{#requestPage}"></s:hidden>
 			操作时间：<s:textfield
 					onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"
 					name="operatorDateFirst" value="%{#operatorDateFirst}" cssStyle="width:120px;"></s:textfield>-<s:textfield
@@ -92,7 +93,7 @@ table td {
 					list="#{1:'SUCCESS',2:'FAILURE'}"></s:radio>
 				<br />
 			操作人：<s:textfield name="operator" value="%{#operator}"/>
-				<s:submit cssStyle="width:50px;margin-left:150px;margin-top:10px;"
+				<s:submit id="query" cssStyle="width:50px;margin-left:150px;margin-top:10px;"
 					value="查询"></s:submit>
 			</s:form>
 		</fieldset>
