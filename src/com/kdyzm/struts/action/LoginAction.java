@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import com.kdyzm.struts.action.base.BaseAction;
 @Controller("loginAction")
 @Scope("prototype")
 public class LoginAction extends BaseAction<User> implements SessionAware{
+	private Logger logger=Logger.getLogger(LoginAction.class);
 	private static final long serialVersionUID = 879952397314349337L;
 	@Resource(name="userService")
 	private UserService userService;
@@ -29,7 +31,7 @@ public class LoginAction extends BaseAction<User> implements SessionAware{
 		User user=userService.checkEmailAndPassword(this.model);
 		if(user==null){
 			addActionError("用户名或者密码错误！");
-			System.out.println("用户名或者密码错误！");
+			logger.info("用户名或者密码错误！");
 			return "input";
 		}else{
 			//关于怎么将Session直接注入Action中的方法是一个比较难的题目
