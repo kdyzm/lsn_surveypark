@@ -12,7 +12,7 @@
 			<interceptor-stack name="surveyparkStack">
 				<interceptor-ref name="loginInterceptor"></interceptor-ref>
 				<!-- url捕获拦截器应当放到登录拦截器之后,完成项目之后应当将该拦截器拿掉 -->
-				<!-- <interceptor-ref name="catchUrlInterceptor"></interceptor-ref> -->
+				<interceptor-ref name="catchUrlInterceptor"></interceptor-ref>
 				<!-- 这里不使用defaultStack，使用paramsPrepareParamsStack的原因是前者无法从页面向Action传递参数 -->
 				<interceptor-ref name="defaultStack">
 					<!-- 这里开启模型驱动的自动刷新功能 ，这个配置十分强大，最重要的是要理解为什么要这么配置-->

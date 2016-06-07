@@ -68,6 +68,7 @@ public class SurveyAction extends BaseAction<Survey> implements UserAware, Servl
 	public String toMySurveyPage() throws Exception {
 		List<Survey> surveys = this.surveyService.findMySurveys(user);
 		ActionContext.getContext().put("surveys", surveys);
+//		ActionContext.getContext().getSession().get("");
 		return "toMySurveyPage";
 	}
 
