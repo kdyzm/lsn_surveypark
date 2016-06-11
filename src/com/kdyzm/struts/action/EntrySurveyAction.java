@@ -23,11 +23,9 @@ import com.kdyzm.datasource.SurveyToken;
 import com.kdyzm.domain.Answer;
 import com.kdyzm.domain.Page;
 import com.kdyzm.domain.Survey;
-import com.kdyzm.domain.User;
 import com.kdyzm.service.AnswerService;
 import com.kdyzm.service.PageService;
 import com.kdyzm.service.SurveyService;
-import com.kdyzm.struts.action.aware.UserAware;
 import com.kdyzm.struts.action.base.BaseAction;
 import com.kdyzm.utils.StringUtils;
 import com.opensymphony.xwork2.ActionContext;
@@ -39,10 +37,9 @@ import com.opensymphony.xwork2.ActionContext;
  */
 @Controller("entryServeyAction")
 @Scope("prototype")
-public class EntrySurveyAction extends BaseAction<Survey> implements SessionAware,ParameterAware,UserAware,ServletContextAware,RequestAware{
+public class EntrySurveyAction extends BaseAction<Survey> implements SessionAware,ParameterAware,ServletContextAware,RequestAware{
 	private Logger logger=Logger.getLogger(EntrySurveyAction.class);
 	private static final long serialVersionUID = -6174312592542400730L;
-	private User user;
 	private ServletContext servletConetxt;
 	private Map<String,Object>request;
 	private Map<String,String[]>parameters;
@@ -70,10 +67,6 @@ public class EntrySurveyAction extends BaseAction<Survey> implements SessionAwar
 		ActionContext.getContext().put("surveys", surveys);
 //		IteratorStatus x;
 		return "toEntrySurveyPage";
-	}
-	@Override
-	public void setUser(User user) {
-		this.user=user;
 	}
 	
 	//判断logo是否存在如果存在返回路径，如果不存在，返回默认路径
