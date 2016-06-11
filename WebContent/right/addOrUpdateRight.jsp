@@ -62,9 +62,9 @@
 			</div>
 		</div>
 	</nav>
-	
+	<br/>
 	<div class="container">
-		<s:form action="RightAction_saveOrUpdateRightPage.action" namespace="/">
+		<s:form cssClass="form-horizontal" role="form" cssStyle="width:80%;margin:0 auto;" action="RightAction_saveOrUpdateRightPage.action" namespace="/">
 			<s:hidden name="rightId"></s:hidden>
 			<div class="form-group">
 				<label for="rightName" class="col-sm-2 control-label">权限名称</label>
@@ -93,17 +93,19 @@
 					<s:textfield cssClass="form-control" name="rightCodes"></s:textfield>
 				</div>
 			</div>
-			<div>
-				<label for="common">公共资源</label>
-		    	<s:checkbox cssStyle="margin-left:300px;margin-top:20px;display: inline-block;" cssClass="checkbox" name="common" type="checkbox"></s:checkbox>
-			</div>			
+			<div class="form-group">
+				<div>
+					<label for="common" class="col-sm-2 control-label">公共资源</label>
+			    	<s:checkbox  cssClass="checkbox" name="common" type="checkbox"></s:checkbox>
+				</div>			
+			</div>
 		   
-		   <form role="form">
-			  <div class="form-group">
+		  <div class="form-group">
+		  	<div>
 			    <label for="rightDesc">权限描述</label>
 			    <s:textarea name="rightDesc" cssClass="form-control" rows="10"></s:textarea>
-			  </div>
-			</form>
+		    </div>
+		  </div>
 			
 			<div class="form-group" style="width:500px;margin:0 auto;">
 				<div style="width:200px;display: inline-block;border:0px solid;" class="col-sm-10">

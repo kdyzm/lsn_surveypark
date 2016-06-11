@@ -127,9 +127,10 @@
 			</div>
 		</div>
 	</nav>
+	<br/>
 	<!-- 替换bootstrap表单 -->
 	<div class="container">
-		<s:form cssClass="form-horizontal" role="form"
+		<s:form cssClass="form-horizontal" cssStyle="width:80%;margin:0 auto;" role="form"
 			action="AuthenticationAction_saveOrUpdateAuthentication.action"
 			namespace="/">
 			<s:hidden name="userId"></s:hidden>
