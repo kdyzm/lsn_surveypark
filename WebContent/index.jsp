@@ -96,7 +96,9 @@
 			<h1>欢迎你,<s:property value="%{#session.user.nickName}"/></h1>
 			&nbsp;&nbsp;
 			<s:a action="UserAction_logout.action">注销</s:a>&nbsp;&nbsp;&nbsp;
-			<s:a action="">修改个人资料</s:a>
+			<s:a action="UserAction_toUserProfile.action">
+				<s:param name="userId" value="%{#session.user.userId}"></s:param>
+			修改个人资料</s:a>
 		</div>
 	</s:if>
 	<s:else>
