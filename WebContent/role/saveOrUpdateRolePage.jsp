@@ -26,12 +26,22 @@
 			});
 			return false;
 		});
+		$("button[id='allToLeft']").unbind("click");
+		$("button[id='allToLeft']").bind("click", function() {
+			var noneOwnRights = $("select[name='noneOwnRights']");
+			var ownRights = $("select[name='ownRights']");
+			$("select[name='noneOwnRights'] option").each(function() {
+				ownRights.append($(this).clone());
+				$(this).remove();
+			});
+			return false;
+		});
 		$("button[id='toLeft']").unbind("click");
 		$("button[id='toLeft']").bind("click", function() {
 			var noneOwnRights = $("select[name='noneOwnRights']");
 			var ownRights = $("select[name='ownRights']");
 			$("select[name='noneOwnRights'] option:selected").each(function() {
-				ownRights.prepend($(this).clone());
+				ownRights.append($(this).clone());
 				$(this).remove();
 			});
 			return false;
@@ -42,16 +52,6 @@
 			var ownRights = $("select[name='ownRights']");
 			$("select[name='ownRights'] option").each(function() {
 				noneOwnRights.append($(this).clone());
-				$(this).remove();
-			});
-			return false;
-		});
-		$("button[id='allToLeft']").unbind("click");
-		$("button[id='allToLeft']").bind("click", function() {
-			var noneOwnRights = $("select[name='noneOwnRights']");
-			var ownRights = $("select[name='ownRights']");
-			$("select[name='noneOwnRights'] option").each(function() {
-				ownRights.append($(this).clone());
 				$(this).remove();
 			});
 			return false;
